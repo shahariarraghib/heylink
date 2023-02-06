@@ -9,7 +9,8 @@ const {
 exports.createCommon = async (req, res, next) => {
   try {
     const { name } = req.params;
-    const result = await createCommonService(req.body, name);
+    const imageFile = req.file;
+    const result = await createCommonService(req.body, name, imageFile);
     res.status(200).json({
       status: "success",
       message: "Data inserted successfully",
@@ -82,7 +83,8 @@ exports.deleteCommon = async (req, res, next) => {
 exports.patchCommonById = async (req, res, next) => {
   try {
     const { name, id } = req.params;
-    const result = await patchCommonByIdService(name, id, req.body);
+    const imageFile = req.file;
+    const result = await patchCommonByIdService(name, id, req.body, imageFile);
     res.status(200).json({
       status: "success",
       message: "Update successfully",

@@ -9,7 +9,7 @@ const menu = require("../../Models/Links/Menu");
 const music = require("../../Models/Links/Music");
 const social = require("../../Models/Links/Social");
 
-exports.createCommonService = async (bodyData, ActionName) => {
+exports.createCommonService = async (bodyData, ActionName, imageFile) => {
   console.log(ActionName);
   if (ActionName === "common") {
     const result = await common.create(bodyData);
@@ -18,7 +18,12 @@ exports.createCommonService = async (bodyData, ActionName) => {
     const result = await social.create(bodyData);
     return result;
   } else if (ActionName === "gallery") {
-    const result = await gallery.create(bodyData);
+    const result = await gallery.create({
+      image: {
+        data: imageFile.filename,
+        contentType: imageFile.originalname,
+      },
+    });
     return result;
   } else if (ActionName === "menu") {
     const result = await menu.create(bodyData);
@@ -134,14 +139,34 @@ exports.deleteCommonService = async (ActionName, id) => {
   }
 };
 
-exports.patchCommonByIdService = async (ActionName, userId, patchData) => {
+exports.patchCommonByIdService = async (
+  ActionName,
+  userId,
+  patchData,
+  imageFile
+) => {
   if (ActionName === "common") {
-    const result = await common.updateOne(
-      { _id: userId },
-      { $set: patchData },
-      { runValidators: true }
-    );
-    return result;
+    if (imageFile === undefined) {
+      const result = await common.updateOne(
+        { _id: userId },
+        { $set: patchData },
+        { runValidators: true }
+      );
+      return result;
+    } else {
+      const data = {
+        image: {
+          data: imageFile.filename,
+          contentType: imageFile.originalname,
+        },
+      };
+      const result = await common.updateOne(
+        { _id: userId },
+        { $set: data },
+        { runValidators: true }
+      );
+      return result;
+    }
   } else if (ActionName === "social") {
     const result = await social.updateOne(
       { _id: userId },
@@ -150,9 +175,15 @@ exports.patchCommonByIdService = async (ActionName, userId, patchData) => {
     );
     return result;
   } else if (ActionName === "gallery") {
+    const data = {
+      image: {
+        data: imageFile.filename,
+        contentType: imageFile.originalname,
+      },
+    };
     const result = await gallery.updateOne(
       { _id: userId },
-      { $set: patchData },
+      { $set: data },
       { runValidators: true }
     );
     return result;
