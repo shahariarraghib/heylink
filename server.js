@@ -6,7 +6,7 @@ const app = require("./app");
 
 // database connection
 mongoose.connect(process.env.DATABASE_LOCAL).then(() => {
-  console.log(`Job-Portal-system database connection is successfully`.yellow.bold);
+  console.log(`HeyLink surver is connected!!`.yellow.bold);
 });
 
 // server port

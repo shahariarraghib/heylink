@@ -3,6 +3,7 @@ const {
   getlinksCommonService,
   deletelinksCommonService,
   patchlinksCommonByIdService,
+  getlinksCommonByIdService,
 } = require("../Services/links.service");
 
 exports.createLinksCommon = async (req, res, next) => {
@@ -71,6 +72,24 @@ exports.patchLinksCommonById = async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await patchlinksCommonByIdService(id, req.body);
+    res.status(200).json({
+      status: "success",
+      message: "Update successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: "error",
+      message: "upadate couldn't success",
+      error: error.message,
+    });
+  }
+};
+
+exports.getLinksCommonById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await getlinksCommonByIdService(id);
     res.status(200).json({
       status: "success",
       message: "Data get successfully",

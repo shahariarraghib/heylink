@@ -9,6 +9,8 @@ const linksSchema = mongoose.Schema(
         },
         image: {
           type: String,
+          // data: Buffer,
+          // contentType: String,
         },
         activeFrom: {
           type: String,
@@ -29,13 +31,16 @@ const linksSchema = mongoose.Schema(
 
     gallery: [
       {
-        data: { type: Buffer },
+        data: {
+          data: Buffer,
+          contentType: String,
+        },
       },
     ],
 
     menu: [
       {
-        data: { type: Buffer },
+        data: { type: Buffer, contentType: String },
       },
     ],
 
