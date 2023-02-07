@@ -4,6 +4,9 @@ const socialSchema = mongoose.Schema(
     name: {
       type: String,
     },
+    image: {
+      type: String,
+    },
     link: {
       type: String,
     },
