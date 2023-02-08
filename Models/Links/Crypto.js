@@ -7,6 +7,12 @@ const cryptoSchema = mongoose.Schema(
     address: {
       type: String,
     },
+    userInfo: [
+      {
+        type: ObjectId,
+        ref: "User",
+      },
+    ],
   },
 
   {

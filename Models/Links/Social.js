@@ -10,6 +10,12 @@ const socialSchema = mongoose.Schema(
     link: {
       type: String,
     },
+    userInfo: [
+      {
+        type: ObjectId,
+        ref: "User",
+      },
+    ],
   },
 
   {

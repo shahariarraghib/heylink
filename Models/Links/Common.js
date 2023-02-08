@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema.Types;
 const linksSchema = mongoose.Schema(
   {
     link: {
@@ -14,6 +15,12 @@ const linksSchema = mongoose.Schema(
     activeUntile: {
       type: String,
     },
+    userInfo: [
+      {
+        type: ObjectId,
+        ref: "User",
+      },
+    ],
   },
 
   {

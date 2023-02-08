@@ -3,6 +3,7 @@ const router = express.Router();
 const commonController = require("../../Controller/LinksController/Common.controller.js");
 const multer = require("multer");
 const path = require("path");
+const verifyToken = require("../../Middleware/verifyToken.js");
 
 //upload folder destination
 const UPLOADS_FOLDER = "./uploads";
@@ -52,7 +53,7 @@ const upload = multer({
 router
   .route("/:name")
   .post(upload.single("file"), commonController.createCommon)
-  .get(commonController.getCommon);
+  .get(verifyToken, commonController.getCommon);
 router
   .route("/:name/:id")
   .patch(upload.single("file"), commonController.patchCommonById)

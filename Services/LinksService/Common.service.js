@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const ObjectId = require("mongodb").ObjectId;
 const apps = require("../../Models/Links/Apps");
 const commerce = require("../../Models/Links/Commerce");
 const common = require("../../Models/Links/Common");
@@ -46,9 +47,9 @@ exports.createCommonService = async (bodyData, ActionName, imageFile) => {
   }
 };
 
-exports.getCommonService = async (ActionName) => {
+exports.getCommonService = async (ActionName, userID) => {
   if (ActionName === "common") {
-    const result = await common.find();
+    const result = await common.find().populate("userInfo");
     return result;
   } else if (ActionName === "social") {
     const result = await social.find();

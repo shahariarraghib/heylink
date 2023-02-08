@@ -7,6 +7,12 @@ const menuSchema = mongoose.Schema(
     currency: {
       type: String,
     },
+    userInfo: [
+      {
+        type: ObjectId,
+        ref: "User",
+      },
+    ],
   },
 
   {

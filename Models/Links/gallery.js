@@ -5,6 +5,12 @@ const gallerySchema = mongoose.Schema(
       data: Buffer,
       contentType: String,
     },
+    userInfo: [
+      {
+        type: ObjectId,
+        ref: "User",
+      },
+    ],
   },
 
   {

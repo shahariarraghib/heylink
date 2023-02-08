@@ -7,6 +7,12 @@ const appsSchema = mongoose.Schema(
     androidlink: {
       type: String,
     },
+    userInfo: [
+      {
+        type: ObjectId,
+        ref: "User",
+      },
+    ],
   },
 
   {

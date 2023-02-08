@@ -27,8 +27,10 @@ exports.createCommon = async (req, res, next) => {
 
 exports.getCommon = async (req, res, next) => {
   try {
+    // console.log(req.user);
+    const userId = req.user?._id;
     const { name } = req.params;
-    const result = await getCommonService(name);
+    const result = await getCommonService(name, userId);
     res.status(200).json({
       status: "success",
       message: "Data get successfully",
