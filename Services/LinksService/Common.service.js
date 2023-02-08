@@ -49,7 +49,7 @@ exports.createCommonService = async (bodyData, ActionName, imageFile) => {
 
 exports.getCommonService = async (ActionName, userID) => {
   if (ActionName === "common") {
-    const result = await common.find().populate("userInfo");
+    const result = await common.usetInfo.find().populate("userInfo");
     return result;
   } else if (ActionName === "social") {
     const result = await social.find();
