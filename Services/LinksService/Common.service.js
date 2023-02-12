@@ -9,9 +9,9 @@ const location = require("../../Models/Links/Location");
 const menu = require("../../Models/Links/Menu");
 const music = require("../../Models/Links/Music");
 const social = require("../../Models/Links/Social");
+const fs = require("fs");
 
 exports.createCommonService = async (bodyData, ActionName, imageFile) => {
-  console.log(ActionName);
   if (ActionName === "common") {
     const result = await common.create(bodyData);
     return result;
@@ -19,9 +19,11 @@ exports.createCommonService = async (bodyData, ActionName, imageFile) => {
     const result = await social.create(bodyData);
     return result;
   } else if (ActionName === "gallery") {
+    let img = fs.readFileSync(imageFile.path);
+
     const result = await gallery.create({
       image: {
-        data: imageFile.filename,
+        data: img,
         contentType: imageFile.originalname,
       },
     });
@@ -60,7 +62,13 @@ exports.getCommonService = async (ActionName, userID) => {
     return a;
   } else if (ActionName === "social") {
     const result = await social.find();
-    return result;
+    const a = result.filter((url) => {
+      const id = JSON.stringify(url?.userInfo[0]);
+      if (id === JSON.stringify(userID)) {
+        return url;
+      }
+    });
+    return a;
   } else if (ActionName === "gallery") {
     const result = await gallery.find();
     return result;
@@ -153,6 +161,7 @@ exports.patchCommonByIdService = async (
   patchData,
   imageFile
 ) => {
+  let img = fs.readFileSync(imageFile.path);
   if (ActionName === "common") {
     if (imageFile === undefined) {
       const result = await common.updateOne(
@@ -164,7 +173,7 @@ exports.patchCommonByIdService = async (
     } else {
       const data = {
         image: {
-          data: imageFile.filename,
+          data: img,
           contentType: imageFile.originalname,
         },
       };

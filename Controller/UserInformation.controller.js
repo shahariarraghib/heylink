@@ -75,7 +75,7 @@ exports.login = async (req, res) => {
 
 exports.getUserInfo = async (req, res) => {
   try {
-    console.log(req.user);
+  
     const result = await loginService(req.user?.email);
     res.status(200).json({
       status: "success",
