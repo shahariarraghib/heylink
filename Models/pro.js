@@ -1,23 +1,18 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
-const menuSchema = mongoose.Schema(
+const proSchema = mongoose.Schema(
   {
-    name: {
-      type: String,
-    },
-    currency: {
-      type: String,
-    },
-
-    item: {
+    subscriptionplane: {
       type: String,
     },
     price: {
       type: String,
     },
-    image: {
-      data: Buffer,
-      contentType: String,
+    country: {
+      type: String,
+    },
+    discountcode: {
+      type: String,
     },
     userInfo: [
       {
@@ -32,5 +27,5 @@ const menuSchema = mongoose.Schema(
   }
 );
 
-const menu = mongoose.model("menu", menuSchema);
-module.exports = menu;
+const pro = mongoose.model("pro", proSchema);
+module.exports = pro;

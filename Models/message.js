@@ -1,23 +1,21 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
-const menuSchema = mongoose.Schema(
+const messageSchema = mongoose.Schema(
   {
+    text: {
+      type: String,
+    },
     name: {
       type: String,
     },
-    currency: {
+    emailaddress: {
       type: String,
     },
-
-    item: {
+    phonenumber: {
       type: String,
     },
-    price: {
+    datareceive: {
       type: String,
-    },
-    image: {
-      data: Buffer,
-      contentType: String,
     },
     userInfo: [
       {
@@ -32,5 +30,5 @@ const menuSchema = mongoose.Schema(
   }
 );
 
-const menu = mongoose.model("menu", menuSchema);
-module.exports = menu;
+const message = mongoose.model("message", messageSchema);
+module.exports = message;

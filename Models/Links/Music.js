@@ -5,6 +5,9 @@ const musicSchema = mongoose.Schema(
     link: {
       type: String,
     },
+    title: {
+      type: String,
+    },
     userInfo: [
       {
         type: ObjectId,

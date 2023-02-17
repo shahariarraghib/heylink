@@ -6,6 +6,10 @@ const gallerySchema = mongoose.Schema(
       data: Buffer,
       contentType: String,
     },
+
+    title: {
+      type: String,
+    },
     userInfo: [
       {
         type: ObjectId,

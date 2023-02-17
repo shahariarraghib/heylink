@@ -39,6 +39,14 @@ const userSchema = mongoose.Schema(
       enum: ["active", "inactive", "blocked"],
       default: "active",
     },
+
+    image: {
+      data: Buffer,
+      contentType: String,
+    },
+    profiletitle: {
+      type: String,
+    },
     passwordChangeAt: Date,
     passwordResetToken: String,
     passwordResetExpires: Date,
