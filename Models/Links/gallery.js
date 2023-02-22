@@ -10,10 +10,81 @@ const gallerySchema = mongoose.Schema(
     title: {
       type: String,
     },
+    show: {
+      type: String,
+      enum: ["true", "false"],
+      default: "false",
+    },
+    showAs: {
+      type: String,
+      enum: ["slider", "grid"],
+      default: "slider",
+    },
+
+    descriptionAndLinks: {
+      type: String,
+      enum: ["forslider", "forEveryImage"],
+      default: "slider",
+    },
+
+    addDescription: {
+      type: String,
+      enum: ["true", "false"],
+      default: "false",
+    },
+
+    imageSliderTitle: {
+      type: String,
+    },
+    imageSliderDescription: {
+      type: String,
+    },
+
+    addlinks: {
+      type: String,
+      enum: ["true", "false"],
+      default: "false",
+    },
+
+    linkText: {
+      type: String,
+    },
+    linkUrl: {
+      type: String,
+    },
+
+    imageTitle: {
+      type: String,
+    },
+    imageDescription: {
+      type: String,
+    },
+    imagelinkText: {
+      type: String,
+    },
+    imagelinkurl: {
+      type: String,
+    },
+
+    imageShapeAndSize: {
+      type: String,
+    },
+
+    advanceImageAutomatically: {
+      type: String,
+      enum: ["true", "false"],
+      default: "false",
+    },
+
+    advanceImageAutomaticallyTime: {
+      type: String,
+    },
+
     userInfo: [
       {
         type: ObjectId,
         ref: "User",
+        required: [true, "userInfo is required"],
       },
     ],
   },

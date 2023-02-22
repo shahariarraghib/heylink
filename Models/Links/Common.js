@@ -15,10 +15,25 @@ const linksSchema = mongoose.Schema(
     activeUntile: {
       type: String,
     },
+    show: {
+      type: String,
+      enum: ["true", "false"],
+      default: "false",
+    },
+
+    moveToBottom: {
+      type: String,
+      enum: ["true", "false"],
+      default: "false",
+    },
+   effects: {
+      type: String,
+    },
     userInfo: [
       {
         type: ObjectId,
         ref: "User",
+        required: [true, "userInfo is required"],
       },
     ],
   },
