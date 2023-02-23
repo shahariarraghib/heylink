@@ -8,13 +8,23 @@ const menuSchema = mongoose.Schema(
     currency: {
       type: String,
     },
+    show: {
+      type: String,
+      enum: ["true", "false"],
+      default: "false",
+    },
 
-    item: {
-      type: String,
-    },
-    price: {
-      type: String,
-    },
+    item: [
+      {
+        itemText: {
+          type: String,
+        },
+        ItemPrice: {
+          type: String,
+        },
+      },
+    ],
+
     image: {
       data: Buffer,
       contentType: String,

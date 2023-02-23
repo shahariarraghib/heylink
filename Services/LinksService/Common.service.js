@@ -273,12 +273,28 @@ exports.patchCommonByIdService = async (
     );
     return result;
   } else if (ActionName === "location") {
-    const result = await location.updateOne(
-      { _id: userId },
-      { $set: patchData },
-      { runValidators: true }
-    );
-    return result;
+    if (imageFile === undefined) {
+      const result = await location.updateOne(
+        { _id: userId },
+        { $set: patchData },
+        { runValidators: true }
+      );
+      return result;
+    } else {
+      let img = fs.readFileSync(imageFile.path);
+      const data = {
+        image: {
+          data: img,
+          contentType: imageFile.originalname,
+        },
+      };
+      const result = await location.updateOne(
+        { _id: userId },
+        { $set: data },
+        { runValidators: true }
+      );
+      return result;
+    }
   } else if (ActionName === "music") {
     const result = await music.updateOne(
       { _id: userId },

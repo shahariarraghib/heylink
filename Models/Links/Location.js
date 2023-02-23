@@ -5,6 +5,15 @@ const locationSchema = mongoose.Schema(
     link: {
       type: String,
     },
+    image: {
+      data: Buffer,
+      contentType: String,
+    },
+    show: {
+      type: String,
+      enum: ["true", "false"],
+      default: "false",
+    },
     userInfo: [
       {
         type: ObjectId,
