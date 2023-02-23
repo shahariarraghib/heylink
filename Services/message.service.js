@@ -5,9 +5,17 @@ exports.createMessageService = async (data) => {
   return result;
 };
 
-exports.getMessageService = async () => {
-  const result = await message.find({});
-  return result;
+exports.getMessageService = async (userId) => {
+  const result = await message.find();
+  const data = result.filter((url) => {
+    const id = JSON.stringify(url?.userInfo[0]);
+    if (id === JSON.stringify(userId)) {
+      return url;
+    }
+  });
+  
+
+  return data;
 };
 
 exports.deleteMessageServiceById = async (id) => {

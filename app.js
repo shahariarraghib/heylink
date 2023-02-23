@@ -12,11 +12,13 @@ const linksRoute = require("./Routes/Links/Common.route");
 const userRoute = require("./Routes/UserInformation.route");
 const proRoute = require("./Routes/pro.route");
 const messageRoute = require("./Routes/message.route");
+const signupRoute = require("./Routes/signup.route");
 
 app.use("/app/v1/links", linksRoute);
 app.use("/app/v1/user", userRoute);
 app.use("/app/v1/pro", proRoute);
 app.use("/app/v1/message", messageRoute);
+app.use("/app/v1/signup", signupRoute);
 
 app.get("/", (req, res) => {
   res.send("HeyLink surver is connected!!");
