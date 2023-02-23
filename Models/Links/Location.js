@@ -5,10 +5,16 @@ const locationSchema = mongoose.Schema(
     link: {
       type: String,
     },
+
+    markersOnMap: {
+      type: String,
+    },
+
     image: {
       data: Buffer,
       contentType: String,
     },
+
     show: {
       type: String,
       enum: ["true", "false"],
