@@ -5,6 +5,9 @@ const linksSchema = mongoose.Schema(
     link: {
       type: String,
     },
+    linkTitle: {
+      type: String,
+    },
     image: {
       data: Buffer,
       contentType: String,
@@ -26,7 +29,7 @@ const linksSchema = mongoose.Schema(
       enum: ["true", "false"],
       default: "false",
     },
-   effects: {
+    effects: {
       type: String,
     },
     userInfo: [

@@ -19,7 +19,6 @@ exports.createCommonService = async (bodyData, ActionName, imageFile) => {
     const result = await social.create(bodyData);
     return result;
   } else if (ActionName === "gallery") {
-   
     let img = fs.readFileSync(imageFile.path);
 
     const result = await gallery.create({

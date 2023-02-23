@@ -17,12 +17,38 @@ const messageSchema = mongoose.Schema(
     datareceive: {
       type: String,
     },
+    turnOnName: {
+      type: String,
+      enum: ["true", "false"],
+      default: "false",
+    },
+    turnOnEmail: {
+      type: String,
+      enum: ["true", "false"],
+      default: "false",
+    },
+    turnOnPhoneNumber: {
+      type: String,
+      enum: ["true", "false"],
+      default: "false",
+    },
+    turnOnOffMessage: {
+      type: String,
+      enum: ["true", "false"],
+      default: "false",
+    },
+    messageText: {
+      type: String,
+    },
+    successMessageText: {
+      type: String,
+    },
+
     userInfo: [
       {
         type: ObjectId,
         ref: "User",
         required: [true, "userInfo is required"],
-
       },
     ],
   },
