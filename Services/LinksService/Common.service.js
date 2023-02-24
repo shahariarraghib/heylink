@@ -177,8 +177,21 @@ exports.deleteCommonService = async (ActionName, id) => {
     const result = await gallery.deleteOne({ _id: id });
     return result;
   } else if (ActionName === "menu") {
+    const result2 = await menu.find({
+      item: { $elemMatch: { _id: id } },
+    });
+
+    console.log(result2);
+    let bankId = JSON.stringify(result2[0]?._id);
+    const stringWithoutQuotes = bankId?.replace(/"/g, "");
+    console.log(stringWithoutQuotes);
+
+    const deleteResult = await menu.updateOne(
+      { _id: stringWithoutQuotes },
+      { $set: { item: { _id: id } } }
+    );
     const result = await menu.deleteOne({ _id: id });
-    return result;
+    return { result, deleteResult };
   } else if (ActionName === "crypto") {
     const result = await crypto.deleteOne({ _id: id });
     return result;

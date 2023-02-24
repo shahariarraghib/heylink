@@ -13,7 +13,6 @@ exports.getMessageService = async (userId) => {
       return url;
     }
   });
-  
 
   return data;
 };
@@ -23,12 +22,12 @@ exports.deleteMessageServiceById = async (id) => {
   return result;
 };
 
-// exports.patchProServiceById = async (proId, patchData) => {
-//   console.log(proId.patchData);
-//   const result = await message.updateOne(
-//     { _id: proId },
-//     { $set: patchData },
-//     { runValidators: true }
-//   );
-//   return result;
-// };
+exports.patchMessageServiceById = async (proId, patchData) => {
+  console.log(proId.patchData);
+  const result = await message.updateOne(
+    { _id: proId },
+    { $set: patchData },
+    { runValidators: true }
+  );
+  return result;
+};

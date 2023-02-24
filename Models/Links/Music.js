@@ -8,6 +8,11 @@ const musicSchema = mongoose.Schema(
     title: {
       type: String,
     },
+    show: {
+      type: String,
+      enum: ["true", "false"],
+      default: "false",
+    },
     userInfo: [
       {
         type: ObjectId,
