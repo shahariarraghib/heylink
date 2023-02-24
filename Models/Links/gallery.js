@@ -90,9 +90,11 @@ const gallerySchema = mongoose.Schema(
       type: String,
     },
 
-    showAsGridImages: {
-      type: String,
-    },
+    showAsGridImages: [
+      {
+        imageLinkUrl: { type: String },
+      },
+    ],
     showAsGridShapeAndSizeImagePerRow: {
       type: String,
     },
