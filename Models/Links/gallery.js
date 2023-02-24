@@ -80,6 +80,23 @@ const gallerySchema = mongoose.Schema(
       type: String,
     },
 
+    appearanceTitleAndDescriptionColor: {
+      type: String,
+    },
+    appearanceLinkTextColor: {
+      type: String,
+    },
+    appearanceButtonBackgroundColorColor: {
+      type: String,
+    },
+
+    showAsGridImages: {
+      type: String,
+    },
+    showAsGridShapeAndSizeImagePerRow: {
+      type: String,
+    },
+
     userInfo: [
       {
         type: ObjectId,
