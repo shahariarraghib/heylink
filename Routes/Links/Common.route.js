@@ -53,7 +53,7 @@ const upload = multer({
 router
   .route("/:name")
   .post(verifyToken, upload.single("file"), commonController.createCommon)
-  .get(verifyToken, commonController.getCommon);
+  .get( commonController.getCommon);
 router
   .route("/:name/:id")
   .patch(verifyToken, upload.single("file"), commonController.patchCommonById)

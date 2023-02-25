@@ -27,7 +27,8 @@ exports.createCommon = async (req, res, next) => {
 
 exports.getCommon = async (req, res, next) => {
   try {
-    const userId = req.user?._id;
+    // const userId = req.user?._id;
+    const userId = req.body?._id;
     console.log(userId);
     const { name } = req.params;
     const result = await getCommonService(name, userId);
